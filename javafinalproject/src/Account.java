@@ -4,6 +4,7 @@ public class Account {
     private String username="";
     private int bankAccountNum=0;
     private int creditScore=0;
+    private int balance=0;
     
     public Account(){
         this.bankAccountNum=createAccNum();
@@ -24,6 +25,9 @@ public class Account {
     
     public int getCS(){
         return creditScore;
+    }
+    public int getBal(){
+        return balance;
     }
     
     
