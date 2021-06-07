@@ -6,9 +6,11 @@ public class Account {
     private int creditScore=0;
     private int balance=0;
     
-    public Account(){
+    public Account(String pw, String un){
         this.bankAccountNum=createAccNum();
         System.out.println("Your account number is "+bankAccountNum);
+        this.username=un;
+        this.password=pw;
     }
     
     public String getPW(){
@@ -29,8 +31,37 @@ public class Account {
     public int getBal(){
         return balance;
     }
-    public void passwordCheck(){
-        
+    public boolean passwordCheck(String p){
+        if(p.length()<8)
+            return false;
+        int upperCount=0;
+        int lowerCount=0;
+        int numCount=0;
+        int symbolCount=0;
+        String symbols="!@#$%^&*()=/?";
+        char c;
+        for(int k=0;k<p.length();k++){
+            c=p.charAt(k);
+            if(Character.isLetter(c)){
+                if(Character.isUpperCase(c))
+                    upperCount++;
+                else
+                    lowerCount++;
+            }
+            else if(Character.isDigit(c))
+                numCount++;
+            else{
+                for(int i=0;i<p.length();i++){
+                    if(symbols.indexOf(c)>0)
+                        symbolCount++;
+                    else
+                        return false;
+                }           
+            }        
+        }
+        if((upperCount<1)||(lowerCount<1)||(numCount<1)||(symbolCount<1))
+            return false;
+        return true;
     }
     
     public int createAccNum(){
