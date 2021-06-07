@@ -29,7 +29,9 @@ public class Account {
     public int getBal(){
         return balance;
     }
-    
+    public void passwordCheck(){
+        
+    }
     
     public int createAccNum(){
         String temp="";
