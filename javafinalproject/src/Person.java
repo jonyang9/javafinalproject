@@ -21,8 +21,5 @@ public class Person {
        return num;      
    }
     
-    
-    
-    
-    
+        
 }
