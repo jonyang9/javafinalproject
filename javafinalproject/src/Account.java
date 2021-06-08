@@ -6,7 +6,10 @@ public class Account {
     private int creditScore=0;
     private int balance=0;
     
-    public Account(String pw, String un){
+    public Account(){
+        
+    }
+    public Account(String un, String pw){
         this.bankAccountNum=createAccNum();
         System.out.println("Your account number is "+bankAccountNum);
         this.username=un;
