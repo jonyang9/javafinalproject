@@ -1,0 +1,20 @@
+  String currentDirectory = System.getProperty("user.dir");
+        System.out.println("Your directory is " + currentDirectory);
+        String fullFileName = currentDirectory + "/filereadtest.txt";
+        System.out.println("The file path is " + fullFileName); 
+        ArrayList<String> lines = new ArrayList<String>();
+        try {
+            
+        } catch (Exception ex) {
+            System.out.println("Error reading!");
+        }
+        
+        if (lines.isEmpty()==false) {
+            System.out.println(lines.get(0)) ;
+        }
+
+login button code^
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.io.FileReader;
+^ needed 
