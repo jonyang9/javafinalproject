@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,10 +20,53 @@ public class BankFrame extends javax.swing.JFrame {
     /**
      * Creates new form BankFrame
      */
+    
+    
+    ArrayList<String> words = new ArrayList();
+    
+    
+    
     public BankFrame() {
         initComponents();
     }
 
+    public void loadWords() {
+        String currentDirectory = System.getProperty("user.dir");
+        String fullFileName = currentDirectory + "/filereadtest.txt";
+        System.out.println("The file path is " + fullFileName);
+        words.clear();
+        try {   
+                FileReader fr = new FileReader(fullFileName);
+                BufferedReader br = new BufferedReader(fr);
+                String line="";
+                while( (line = br.readLine()) != null) {
+                    System.out.println("Just read: " + line);
+                    words.add(line);
+                }
+                br.close();
+        }
+        catch(Exception e) {
+                System.out.println("Something went wrong file reading!");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

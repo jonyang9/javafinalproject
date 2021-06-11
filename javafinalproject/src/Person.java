@@ -9,9 +9,7 @@ public class Person {
     public Person(int age,String name){
         this.age=age;
         this.name=name;
-        this.income=generateIncome();
-            
-        
+        this.income=generateIncome();       
     }
     
     
