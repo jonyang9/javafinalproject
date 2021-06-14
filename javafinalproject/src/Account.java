@@ -34,6 +34,29 @@ public class Account {
     public int getBal(){
         return balance;
     }
+    
+    public void withdraw(int x){
+        if(x<=balance)
+        balance-=x;
+        
+    }
+    
+    public void deposit(int x){
+        
+        balance+=x;
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public boolean passwordCheck(String p){
         if(p.length()<8)
             return false;
