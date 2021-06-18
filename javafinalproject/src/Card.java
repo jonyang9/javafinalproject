@@ -6,13 +6,15 @@ public class Card {
     }
     
     public void add(int x){
-        
+       
         value+=x;    
     }
     
     public void subtract(int x){
         if(x<=value)
         value-=x;
+        else
+            System.out.println("insufficient funds");
     }
     
     

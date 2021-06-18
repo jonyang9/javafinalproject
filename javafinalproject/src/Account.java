@@ -38,13 +38,12 @@ public class Account {
     public void withdraw(int x){
         if(x<=balance)
         balance-=x;
-        
+        else
+            System.out.println("Insufficient funds");
     }
     
-    public void deposit(int x){
-        
-        balance+=x;
-        
+    public void deposit(int x){   
+        balance+=x;       
     }
     
     
