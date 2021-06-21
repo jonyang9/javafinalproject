@@ -27,7 +27,7 @@ public class BankFrame extends javax.swing.JFrame {
    
     
     public BankFrame() {
-     
+     int pTracker = 0;
         loadWords();
         initComponents();
     }
@@ -190,7 +190,7 @@ public class BankFrame extends javax.swing.JFrame {
 
         signUpTab.addTab("Sign Up", jPanel1);
 
-        loginButton.setText("jButton1");
+        loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -300,7 +300,8 @@ public class BankFrame extends javax.swing.JFrame {
         
         String currentDirectory = System.getProperty("user.dir");
         String fullFileName = currentDirectory + "/bankAccounts.txt";
-        
+        Account test123 = new Account(un, pw);
+            accounts.add(test123);
 
         try {
            
@@ -311,8 +312,7 @@ public class BankFrame extends javax.swing.JFrame {
             br.newLine();
 
             br.close();
-            Account test123 = new Account(un, pw);
-            accounts.add(test123);
+            
         }
         catch(Exception e) {
             System.out.println("Error writing to file");
@@ -333,6 +333,7 @@ public class BankFrame extends javax.swing.JFrame {
         if ( tempUN.equals(un) && tempPW.equals(pw)) {
              wLabel.setVisible(false);
             System.out.println("successful login");
+            int pTracker = k;
         }
     }
     
