@@ -37,24 +37,22 @@ public class BankFrame extends javax.swing.JFrame {
         String fullFileName = currentDirectory + "/bankAccounts.txt";
         System.out.println("The file path is " + fullFileName);
         words.clear();
-        accounts.clear();
+        
         try {   
                 FileReader fr = new FileReader(fullFileName);
                 BufferedReader br = new BufferedReader(fr);
                 String line="";
                 while( (line = br.readLine()) != null) {
                     System.out.println("Just read: " + line);
-                    int star = line.indexOf("*");
-                    String temp1 = line.substring(0,star);
-                    String temp2 = line.substring(star+1);
-                    Account temp = new Account(temp1,temp2);
-                    accounts.add(temp);
+                   
                     words.add(line);
                 }
                 br.close();
         }
         catch(Exception e) {
-                System.out.println("Something went wrong file reading words");
+            System.out.println(e);    
+            System.out.println("Something went wrong file reading words");
+                
         }
     }
     
@@ -308,7 +306,18 @@ public class BankFrame extends javax.swing.JFrame {
         
         String un = textUsername.getText();
         String pw = textPassword.getText();
+        for ( int k = 0; k<words.size();k++) {
+         int star = words.get(k).indexOf("*");
+       String tempUN = words.get(k).substring(0, star);
+       String tempPW = words.get(k).substring(star+1);
+       if (tempUN.equals(un)) {
+           textUsername.setText("Username is taken please try again.");
+           break;
+       }
+        }
+       
         
+    
         String currentDirectory = System.getProperty("user.dir");
         String fullFileName = currentDirectory + "/bankAccounts.txt";
         
@@ -333,7 +342,7 @@ public class BankFrame extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
      loadWords();
    
-     System.out.println(accounts);
+    
     String pw = textPassLog.getText();
     String un = textUserLog.getText();
     for ( int k = 0; k<words.size(); k++) {
