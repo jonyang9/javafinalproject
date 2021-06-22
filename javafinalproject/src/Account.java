@@ -89,7 +89,7 @@ public class Account {
         String temp="";
         int num=0;
         for(int k=0;k<10;k++){
-            num=(int)(Math.random()*3);
+            num=(int)(Math.random()*9);
             temp+=Integer.toString(num);           
         }
         num=Integer.parseInt(temp);

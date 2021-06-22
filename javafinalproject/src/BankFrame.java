@@ -343,9 +343,9 @@ public class BankFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-     loadWords();
+     
     int Ptracker = 0;
-    
+    System.out.println(words);
     String pw = textPassLog.getText();
     String un = textUserLog.getText();
     for ( int k = 0; k<words.size(); k++) {
