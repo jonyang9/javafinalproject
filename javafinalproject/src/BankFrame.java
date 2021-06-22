@@ -28,7 +28,7 @@ public class BankFrame extends javax.swing.JFrame {
     
     public BankFrame() {
      int pTracker = 0;
-        loadWords();
+        
         initComponents();
     }
 
@@ -37,20 +37,27 @@ public class BankFrame extends javax.swing.JFrame {
         String fullFileName = currentDirectory + "/bankAccounts.txt";
         System.out.println("The file path is " + fullFileName);
         words.clear();
+        accounts.clear();
         try {   
                 FileReader fr = new FileReader(fullFileName);
                 BufferedReader br = new BufferedReader(fr);
                 String line="";
                 while( (line = br.readLine()) != null) {
                     System.out.println("Just read: " + line);
+                    int star = line.indexOf("*");
+                    String temp1 = line.substring(0,star);
+                    String temp2 = line.substring(star+1);
+                    Account temp = new Account(temp1,temp2);
+                    accounts.add(temp);
                     words.add(line);
                 }
                 br.close();
         }
         catch(Exception e) {
-                System.out.println("Something went wrong file reading!");
+                System.out.println("Something went wrong file reading words");
         }
     }
+    
     
     
     
@@ -100,6 +107,7 @@ public class BankFrame extends javax.swing.JFrame {
         textPassLog = new javax.swing.JTextField();
         wLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        main1 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -122,7 +130,6 @@ public class BankFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textUsername.setText("username text box");
         textUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textUsernameActionPerformed(evt);
@@ -130,8 +137,6 @@ public class BankFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Username:");
-
-        textPassword.setText("password text box");
 
         jLabel2.setText("Password:");
 
@@ -197,18 +202,15 @@ public class BankFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Username:");
 
-        textUserLog.setText("jTextField1");
         textUserLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textUserLogActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("jLabel4");
-
-        textPassLog.setText("jTextField2");
+        jLabel4.setText("Password:");
 
         wLabel.setText("jLabel5");
 
@@ -257,15 +259,23 @@ public class BankFrame extends javax.swing.JFrame {
 
         signUpTab.addTab("Log In", jPanel2);
 
+        main1.setText("Must login first before accessing the main page.");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 552, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(main1)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(main1)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         signUpTab.addTab("Main Page", jPanel3);
@@ -295,14 +305,14 @@ public class BankFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_textUsernameActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+        
         String un = textUsername.getText();
         String pw = textPassword.getText();
         
         String currentDirectory = System.getProperty("user.dir");
         String fullFileName = currentDirectory + "/bankAccounts.txt";
-        Account test123 = new Account(un, pw);
-            accounts.add(test123);
-
+        
+            
         try {
            
             FileWriter fw = new FileWriter(fullFileName, true);
@@ -315,14 +325,14 @@ public class BankFrame extends javax.swing.JFrame {
             
         }
         catch(Exception e) {
-            System.out.println("Error writing to file");
+            System.out.println("Error writing to login file");
         }
-       
-        
+      
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
      loadWords();
+   
      System.out.println(accounts);
     String pw = textPassLog.getText();
     String un = textUserLog.getText();
@@ -334,6 +344,7 @@ public class BankFrame extends javax.swing.JFrame {
              wLabel.setVisible(false);
             System.out.println("successful login");
             int pTracker = k;
+            main1.setVisible(false);
         }
     }
     
@@ -375,6 +386,7 @@ public class BankFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BankFrame().setVisible(true);
+                
             }
         });
     }
@@ -394,6 +406,7 @@ public class BankFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton loginButton;
+    private javax.swing.JLabel main1;
     private javax.swing.JTextArea pwTextArea;
     private javax.swing.JButton signUpButton;
     private javax.swing.JTabbedPane signUpTab;
