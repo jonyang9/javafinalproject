@@ -27,8 +27,8 @@ public class BankFrame extends javax.swing.JFrame {
    
     
     public BankFrame() {
-     int pTracker = 0;
-        
+   
+        loadWords();
         initComponents();
     }
 
@@ -306,6 +306,7 @@ public class BankFrame extends javax.swing.JFrame {
         
         String un = textUsername.getText();
         String pw = textPassword.getText();
+        
         for ( int k = 0; k<words.size();k++) {
          int star = words.get(k).indexOf("*");
        String tempUN = words.get(k).substring(0, star);
@@ -314,8 +315,10 @@ public class BankFrame extends javax.swing.JFrame {
            textUsername.setText("Username is taken please try again.");
            break;
        }
-        }
        
+        }
+       Account temp = new Account();
+        accounts.add(temp);
         
     
         String currentDirectory = System.getProperty("user.dir");
@@ -326,7 +329,7 @@ public class BankFrame extends javax.swing.JFrame {
            
             FileWriter fw = new FileWriter(fullFileName, true);
             BufferedWriter br = new BufferedWriter(fw);
-            br.write(un+"*"+pw);
+            br.write(un+"*"+pw+"^"+temp.getAN());
             
             br.newLine();
 
@@ -341,23 +344,26 @@ public class BankFrame extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
      loadWords();
-   
+    int Ptracker = 0;
     
     String pw = textPassLog.getText();
     String un = textUserLog.getText();
     for ( int k = 0; k<words.size(); k++) {
+       Ptracker = 0;
        int star = words.get(k).indexOf("*");
+       int arrow = words.get(k).indexOf("^");
        String tempUN = words.get(k).substring(0, star);
-       String tempPW = words.get(k).substring(star+1);
+       String tempPW = words.get(k).substring(star+1, arrow);
         if ( tempUN.equals(un) && tempPW.equals(pw)) {
              wLabel.setVisible(false);
             System.out.println("successful login");
-            int pTracker = k;
+            Ptracker = k;
             main1.setVisible(false);
+            
         }
     }
+    System.out.println(accounts.get(Ptracker));
     
-   
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void textUserLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUserLogActionPerformed

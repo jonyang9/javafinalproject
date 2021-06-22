@@ -7,15 +7,11 @@ public class Account {
     private int balance=0;
     
     public Account(){
+    this.bankAccountNum=createAccNum();
+        System.out.println("Your account number is "+bankAccountNum);
         
     }
-    public Account(String un, String pw){
-        this.bankAccountNum=createAccNum();
-        System.out.println("Your account number is "+bankAccountNum);
-        this.username=un;
-        this.password=pw;
-    }
-    
+   
     public String getPW(){
         return password;
     }
@@ -93,7 +89,7 @@ public class Account {
         String temp="";
         int num=0;
         for(int k=0;k<10;k++){
-            num=(int)(Math.random()*9);
+            num=(int)(Math.random()*3);
             temp+=Integer.toString(num);           
         }
         num=Integer.parseInt(temp);
