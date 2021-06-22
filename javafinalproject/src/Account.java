@@ -88,11 +88,12 @@ public class Account {
     public int createAccNum(){
         String temp="";
         int num=0;
+        int temp1 = 0;
         for(int k=0;k<10;k++){
             num=(int)(Math.random()*9);
-            temp+=Integer.toString(num);           
+            temp1+=(num);           
         }
-        num=Integer.parseInt(temp);
+        num=temp1;
         return num;
 }
 }

@@ -315,7 +315,7 @@ public class BankFrame extends javax.swing.JFrame {
            textUsername.setText("Username is taken please try again.");
            break;
        }
-       
+    
         }
        Account temp = new Account();
         accounts.add(temp);
@@ -339,30 +339,35 @@ public class BankFrame extends javax.swing.JFrame {
         catch(Exception e) {
             System.out.println("Error writing to login file");
         }
-      
+      loadWords();
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
      
-    int Ptracker = 0;
-    System.out.println(words);
-    String pw = textPassLog.getText();
-    String un = textUserLog.getText();
-    for ( int k = 0; k<words.size(); k++) {
-       Ptracker = 0;
-       int star = words.get(k).indexOf("*");
-       int arrow = words.get(k).indexOf("^");
-       String tempUN = words.get(k).substring(0, star);
-       String tempPW = words.get(k).substring(star+1, arrow);
-        if ( tempUN.equals(un) && tempPW.equals(pw)) {
-             wLabel.setVisible(false);
-            System.out.println("successful login");
-            Ptracker = k;
-            main1.setVisible(false);
-            
+        int Ptracker = 0;
+        System.out.println(words);
+        String pw = textPassLog.getText();
+        String un = textUserLog.getText();
+        for ( int k = 0; k<words.size(); k++) {
+           System.out.println(k);
+           Ptracker = 0;
+           int star = words.get(k).indexOf("*");
+           int arrow = words.get(k).indexOf("^");
+           
+           String tempUN = words.get(k).substring(0, star);
+           String tempPW = words.get(k).substring(star+1, arrow);
+           
+            if ( tempUN.equals(un) && tempPW.equals(pw)) {
+                 wLabel.setVisible(false);
+                System.out.println("successful login");
+                Ptracker = k;
+                main1.setVisible(false);
+
+            }
+            System.out.println("hello");
         }
-    }
-    System.out.println(accounts.get(Ptracker));
+
+        
     
     }//GEN-LAST:event_loginButtonActionPerformed
 
