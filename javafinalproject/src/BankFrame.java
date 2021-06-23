@@ -25,9 +25,9 @@ public class BankFrame extends javax.swing.JFrame {
     ArrayList<String> words = new ArrayList();
     ArrayList<Account> accounts = new ArrayList();
    
-    
-    public BankFrame() {
    
+    public BankFrame() {
+       
         loadWords();
         initComponents();
     }
@@ -39,6 +39,7 @@ public class BankFrame extends javax.swing.JFrame {
         words.clear();
         
         try {   
+                
                 FileReader fr = new FileReader(fullFileName);
                 BufferedReader br = new BufferedReader(fr);
                 String line="";
@@ -97,15 +98,19 @@ public class BankFrame extends javax.swing.JFrame {
         signUpButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         pwTextArea = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        pwTextArea2 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         textUserLog = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         textPassLog = new javax.swing.JTextField();
-        wLabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        caseS = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         main1 = new javax.swing.JLabel();
+        mainUser = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -147,8 +152,13 @@ public class BankFrame extends javax.swing.JFrame {
 
         pwTextArea.setColumns(20);
         pwTextArea.setRows(5);
-        pwTextArea.setText("password must contain 8 \ncharacters with a mix of upper \nand lowercase letters, \nnumbers, and symbols\n!@#$%^&*()=/?                \n");
+        pwTextArea.setText("Thank you for considering \nJJ Banks! To show our gratitude\nwe are offering a $500 sign up\nso register now while the offer \nstill lasts!              \n");
         jScrollPane2.setViewportView(pwTextArea);
+
+        pwTextArea2.setColumns(20);
+        pwTextArea2.setRows(5);
+        pwTextArea2.setText("password must contain 8 \ncharacters with a mix of upper \nand lowercase letters, \nnumbers, and symbols\n!@#$%^&*()=/?                \n");
+        jScrollPane4.setViewportView(pwTextArea2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,18 +167,20 @@ public class BankFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(signUpButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(textUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
                                 .addComponent(textPassword))
-                            .addComponent(jLabel2))))
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,17 +189,18 @@ public class BankFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
-                .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(signUpButton)
-                .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(textUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(signUpButton))
                 .addContainerGap())
         );
 
@@ -210,32 +223,36 @@ public class BankFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Password:");
 
-        wLabel.setText("jLabel5");
+        caseS.setColumns(20);
+        caseS.setRows(5);
+        caseS.setText("Remember Username \nand Password are \nCase Sensitive!");
+        jScrollPane3.setViewportView(caseS);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel3))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(textUserLog, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel4))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(textPassLog)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(loginButton))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(textUserLog, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(textPassLog)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(wLabel)
-                .addGap(126, 126, 126))
+                        .addGap(59, 59, 59)
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,16 +260,17 @@ public class BankFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textUserLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(wLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textPassLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(loginButton)
-                .addGap(37, 37, 37))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(textUserLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textPassLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(loginButton))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         signUpTab.addTab("Log In", jPanel2);
@@ -264,16 +282,23 @@ public class BankFrame extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(main1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(main1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(mainUser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addContainerGap()
+                .addComponent(mainUser, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(main1)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         signUpTab.addTab("Main Page", jPanel3);
@@ -317,6 +342,7 @@ public class BankFrame extends javax.swing.JFrame {
        }
     
         }
+        
        Account temp = new Account();
         accounts.add(temp);
         
@@ -329,7 +355,7 @@ public class BankFrame extends javax.swing.JFrame {
            
             FileWriter fw = new FileWriter(fullFileName, true);
             BufferedWriter br = new BufferedWriter(fw);
-            br.write(un+"*"+pw+"^"+temp.getAN());
+            br.write(un+"*"+pw+"^"+temp.getAN()+"#500");
             
             br.newLine();
 
@@ -340,6 +366,7 @@ public class BankFrame extends javax.swing.JFrame {
             System.out.println("Error writing to login file");
         }
       loadWords();
+    
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -349,7 +376,7 @@ public class BankFrame extends javax.swing.JFrame {
         String pw = textPassLog.getText();
         String un = textUserLog.getText();
         for ( int k = 0; k<words.size(); k++) {
-           System.out.println(k);
+           
            Ptracker = 0;
            int star = words.get(k).indexOf("*");
            int arrow = words.get(k).indexOf("^");
@@ -358,17 +385,21 @@ public class BankFrame extends javax.swing.JFrame {
            String tempPW = words.get(k).substring(star+1, arrow);
            
             if ( tempUN.equals(un) && tempPW.equals(pw)) {
-                 wLabel.setVisible(false);
+                
                 System.out.println("successful login");
-                Ptracker = k;
+                Ptracker=k;
                 main1.setVisible(false);
-
+                mainUser.setVisible(true);
+                mainUser.setText("Welcome " + un + ".");
             }
-            System.out.println("hello");
+            else {
+                textUserLog.setText("Error please try again!");
+                textPassLog.setText("Error please try again!");
+            }
         }
-
         
-    
+        
+   
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void textUserLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUserLogActionPerformed
@@ -412,6 +443,7 @@ public class BankFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea caseS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -424,16 +456,19 @@ public class BankFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel main1;
+    private javax.swing.JLabel mainUser;
     private javax.swing.JTextArea pwTextArea;
+    private javax.swing.JTextArea pwTextArea2;
     private javax.swing.JButton signUpButton;
     private javax.swing.JTabbedPane signUpTab;
     private javax.swing.JTextField textPassLog;
     private javax.swing.JTextField textPassword;
     private javax.swing.JTextField textUserLog;
     private javax.swing.JTextField textUsername;
-    private javax.swing.JLabel wLabel;
     // End of variables declaration//GEN-END:variables
 }
