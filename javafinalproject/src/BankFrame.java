@@ -24,7 +24,7 @@ public class BankFrame extends javax.swing.JFrame {
     
     ArrayList<String> words = new ArrayList();
     ArrayList<Account> accounts = new ArrayList();
-   
+   int bal = 0;
    
     public BankFrame() {
        
@@ -111,6 +111,7 @@ public class BankFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         main1 = new javax.swing.JLabel();
         mainUser = new javax.swing.JLabel();
+        textBAL = new javax.swing.JTextField();
 
         jMenu1.setText("jMenu1");
 
@@ -282,23 +283,26 @@ public class BankFrame extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(main1))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(mainUser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainUser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204)
+                .addComponent(textBAL, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(main1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mainUser, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textBAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainUser, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
                 .addComponent(main1)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         signUpTab.addTab("Main Page", jPanel3);
@@ -366,38 +370,37 @@ public class BankFrame extends javax.swing.JFrame {
             System.out.println("Error writing to login file");
         }
       loadWords();
-    
+    textBAL.setVisible(false);
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-     
-        int Ptracker = 0;
+        
+       
         System.out.println(words);
         String pw = textPassLog.getText();
         String un = textUserLog.getText();
         for ( int k = 0; k<words.size(); k++) {
            
-           Ptracker = 0;
+           
            int star = words.get(k).indexOf("*");
            int arrow = words.get(k).indexOf("^");
-           
+           int cash = words.get(k).indexOf("#");
            String tempUN = words.get(k).substring(0, star);
            String tempPW = words.get(k).substring(star+1, arrow);
+           String tempBAL = words.get(k).substring(cash+1);
            
             if ( tempUN.equals(un) && tempPW.equals(pw)) {
                 
-                System.out.println("successful login");
-                Ptracker=k;
+                System.out.println("successful login");               
                 main1.setVisible(false);
                 mainUser.setVisible(true);
                 mainUser.setText("Welcome " + un + ".");
+                bal = Integer.parseInt(tempBAL);
+                
+                textBAL.setText("Current balance $"+bal);
             }
-            else {
-                textUserLog.setText("Error please try again!");
-                textPassLog.setText("Error please try again!");
-            }
+            
         }
-        
         
    
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -466,6 +469,7 @@ public class BankFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea pwTextArea2;
     private javax.swing.JButton signUpButton;
     private javax.swing.JTabbedPane signUpTab;
+    private javax.swing.JTextField textBAL;
     private javax.swing.JTextField textPassLog;
     private javax.swing.JTextField textPassword;
     private javax.swing.JTextField textUserLog;
