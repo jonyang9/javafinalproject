@@ -1,5 +1,3 @@
-jackylam*abc123^44#500
-notJanetka*coding123^38#500
-adrianK*bearD^26#500
-GuestUser*help27^33#500
-Youngboy*hey2^35#500
+Jackylam*Abc123^44#500
+testUser*CSawesome23^32#500
+JeremyLin*Bball23^34#500
