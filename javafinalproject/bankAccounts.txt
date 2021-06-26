@@ -1,3 +1,4 @@
 Jackylam*Abc123^44#500
 testUser*CSawesome23^32#500
 JeremyLin*Bball23^34#500
+GuestUser*new123^51#500
